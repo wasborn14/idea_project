@@ -1,0 +1,1 @@
+web: gunicorn idea_api.wsgi --log-file -
