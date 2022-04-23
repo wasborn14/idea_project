@@ -61,7 +61,7 @@ MIDDLEWARE = [
 # アクセス許可
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
-    "https://idea-project-app.vercel.app/"
+    "https://idea-project-app.vercel.app"
 ]
 
 # simple_jwtの設定
