@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG')
 
-ALLOWED_HOSTS = ['idea-api-v1.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'idea-api-v1.herokuapp.com']
 
 
 # Application definition
@@ -61,6 +61,7 @@ MIDDLEWARE = [
 # アクセス許可
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
+    "https://idea-project-app.vercel.app/"
 ]
 
 # simple_jwtの設定
