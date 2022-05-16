@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import os
+import logging
 from pathlib import Path
 from datetime import timedelta
 from decouple import config
@@ -25,8 +27,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG')
 
-ALLOWED_HOSTS = ['127.0.0.1', 'idea-api-v1.herokuapp.com', '198.13.55.142', 'idea-feel.com']
-
+ALLOWED_HOSTS = ['127.0.0.1', 'idea-feel.com']
 
 # Application definition
 
@@ -133,6 +134,59 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGGING = {
+    'version': 1,                       # the dictConfig format version
+    'disable_existing_loggers': False,  # retain the default loggers
+    'handlers': {
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': 'logs/general.log',
+            'level': 'DEBUG',
+        },
+    },
+    'loggers': {
+        '': {
+            'level': 'DEBUG',
+            'handlers': ['file'],
+        },
+    },
+}
+
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing': False,
+#     'formatters': {
+#         'sample': {
+#             'format': '%(asctime)s %(levelname)s [%(pathname)s:%(lineno)s] %(message)s',
+#         }
+#     },
+#     'handlers': {
+#         'console_handler': {
+#             'level': 'DEBUG',
+#             'class': 'logging.StreamHandler',
+#             'formatter': 'sample'
+#         },
+#         'timed_file_handler': {
+#             'level': 'INFO',
+#             'class': 'logging.handlers.TimedRotatingFileHandler',
+#             # 'filename': os.path.join('logs', 'application.log'),
+#             'filename': 'logs/general.log',
+#             'when': 'S',
+#             'interval': 10,
+#             'backupCount': 10,
+#             'formatter': 'sample',
+#             'encoding': 'utf-8',
+#             'delay': True,
+#         }
+#     },
+#     'loggers': {
+#         'application-logger': {
+#             'handlers': ['console_handler', 'timed_file_handler', ],
+#             'level': 'DEBUG',
+#             'propagate': False
+#         }
+#     }
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
